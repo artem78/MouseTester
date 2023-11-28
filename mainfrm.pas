@@ -53,11 +53,11 @@ begin
   HideInstructions;
 
   if Button = mbLeft then
-    TestAreaLabel.Caption:='LMB'
+    TestAreaLabel.Caption:='Left Button'
   else if Button = mbRight then
-    TestAreaLabel.Caption:='RMB'
+    TestAreaLabel.Caption:='Right Button'
   else if Button = mbMiddle then
-    TestAreaLabel.Caption:='MMB'
+    TestAreaLabel.Caption:='Middle Button'
   else
     TestAreaLabel.Caption:='???';
 
