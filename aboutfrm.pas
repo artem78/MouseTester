@@ -57,6 +57,7 @@ end;
 procedure TAboutForm.FormCreate(Sender: TObject);
 var
   FileVerInfo: TFileVersionInfo;
+  VersionStr: String;
 begin
   FileVerInfo := TFileVersionInfo.Create(Nil);
   try
@@ -66,8 +67,11 @@ begin
       Caption := 'About "' + Values['ProductName'] + '"';
       ProgramNameLabel.Caption := Values['ProductName'];
       ProgramDescriptionLabel.Caption := Values['FileDescription'];
-      VersionValueLabel.Caption := Values['FileVersion'];
+      VersionStr := Values['FileVersion'];
     end;
+    if VersionStr.EndsWith('.0') then // Remove build number if zero
+      Delete(VersionStr, Length(VersionStr) - 2, 2);
+    VersionValueLabel.Caption := VersionStr;
 
     BuildDateValueLabel.Caption := DateToStr(EncodeDateTime({$I %dateYear%}, {$I %dateMonth%}, {$I %dateDay%},
             {$I %timeHour%}, {$I %timeMinute%}, {$I %timeSecond%}, 0));
