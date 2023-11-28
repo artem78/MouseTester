@@ -13,10 +13,12 @@ type
 
   TMainForm = class(TForm)
     InstructionsLabel: TLabel;
+    AboutMenuItem: TMenuItem;
     TestAreaLabel: TLabel;
     MainMenu: TMainMenu;
     MainMenuItem: TMenuItem;
     JournalMenuItem: TMenuItem;
+    procedure AboutMenuItemClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure TestAreaLabelMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -39,7 +41,7 @@ var
 
 implementation
 
-uses JournalFrm;
+uses JournalFrm, AboutFrm;
 
 {$R *.lfm}
 
@@ -67,6 +69,15 @@ end;
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
   ScrollCounter:=0;
+end;
+
+procedure TMainForm.AboutMenuItemClick(Sender: TObject);
+var
+  AboutForm: TAboutForm;
+begin
+  AboutForm := TAboutForm.Create(Self);
+  AboutForm.ShowModal;
+  AboutForm.Free;
 end;
 
 procedure TMainForm.TestAreaLabelMouseUp(Sender: TObject; Button: TMouseButton;

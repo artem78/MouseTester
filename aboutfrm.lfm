@@ -1,0 +1,191 @@
+object AboutForm: TAboutForm
+  Left = 268
+  Height = 405
+  Top = 250
+  Width = 520
+  AutoSize = True
+  BorderStyle = bsDialog
+  Caption = 'About program'
+  ClientHeight = 405
+  ClientWidth = 520
+  OnCreate = FormCreate
+  Position = poMainFormCenter
+  LCLVersion = '2.2.4.0'
+  object PropertiesPanel: TPanel
+    Left = 0
+    Height = 317
+    Top = 88
+    Width = 520
+    Align = alClient
+    AutoSize = True
+    BevelOuter = bvNone
+    ChildSizing.LeftRightSpacing = 15
+    ChildSizing.TopBottomSpacing = 15
+    ChildSizing.HorizontalSpacing = 6
+    ChildSizing.VerticalSpacing = 6
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 2
+    ClientHeight = 317
+    ClientWidth = 520
+    TabOrder = 0
+    object VersionTitleLabel: TLabel
+      Left = 15
+      Height = 15
+      Top = 15
+      Width = 62
+      Caption = 'Version:'
+      ParentColor = False
+    end
+    object VersionValueLabel: TLabel
+      Left = 83
+      Height = 15
+      Top = 15
+      Width = 258
+      Caption = 'x.x.x'
+      ParentColor = False
+    end
+    object BuildDateTitleLabel: TLabel
+      Left = 15
+      Height = 15
+      Top = 36
+      Width = 62
+      Caption = 'Build date:'
+      ParentColor = False
+    end
+    object BuildDateValueLabel: TLabel
+      Left = 83
+      Height = 15
+      Top = 36
+      Width = 258
+      Caption = 'xx.xx.xxxx'
+      ParentColor = False
+    end
+    object AuthorTitleLabel: TLabel
+      Left = 15
+      Height = 15
+      Top = 57
+      Width = 62
+      Caption = 'Author:'
+      ParentColor = False
+    end
+    object AuthorPanel: TPanel
+      Left = 83
+      Height = 15
+      Top = 57
+      Width = 258
+      BevelOuter = bvNone
+      ChildSizing.Layout = cclLeftToRightThenTopToBottom
+      ChildSizing.ControlsPerLine = 999
+      ClientHeight = 15
+      ClientWidth = 258
+      TabOrder = 0
+      object AuthorValueLabel1: TLabel
+        Left = 0
+        Height = 15
+        Top = 0
+        Width = 140
+        Caption = 'Artem Demin <artem78> ('
+        ParentColor = False
+      end
+      object AuthorValueLabel2: TLabel
+        Cursor = crHandPoint
+        Left = 140
+        Height = 15
+        Top = 0
+        Width = 114
+        Caption = 'megabyte1024@ya.ru'
+        Font.Color = clBlue
+        Font.Style = [fsUnderline]
+        ParentColor = False
+        ParentFont = False
+        OnClick = AuthorValueLabel2Click
+      end
+      object AuthorValueLabel3: TLabel
+        Left = 254
+        Height = 15
+        Top = 0
+        Width = 4
+        Caption = ')'
+        ParentColor = False
+      end
+    end
+    object LicenseTitleLabel: TLabel
+      Left = 15
+      Height = 15
+      Top = 78
+      Width = 62
+      Caption = 'License:'
+      ParentColor = False
+    end
+    object LicenseValueLabel: TLabel
+      Left = 83
+      Height = 15
+      Top = 78
+      Width = 258
+      Caption = 'GNU General Public License v3.0'
+      ParentColor = False
+      ParentFont = False
+    end
+    object HomePageTitleLabel: TLabel
+      Left = 15
+      Height = 15
+      Top = 99
+      Width = 62
+      Caption = 'Homepage:'
+      ParentColor = False
+    end
+    object HomePageValueLabel: TLabel
+      Cursor = crHandPoint
+      Left = 83
+      Height = 15
+      Top = 99
+      Width = 258
+      Caption = 'https://github.com/artem78/MouseTester'
+      Font.Color = clBlue
+      Font.Style = [fsUnderline]
+      ParentColor = False
+      ParentFont = False
+      OnClick = HomePageValueLabelClick
+    end
+  end
+  object TopPanel: TPanel
+    Left = 0
+    Height = 88
+    Top = 0
+    Width = 520
+    Align = alTop
+    AutoSize = True
+    BevelOuter = bvNone
+    ChildSizing.LeftRightSpacing = 15
+    ChildSizing.TopBottomSpacing = 15
+    ChildSizing.HorizontalSpacing = 15
+    ChildSizing.VerticalSpacing = 6
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 1
+    ClientHeight = 88
+    ClientWidth = 520
+    Constraints.MinWidth = 100
+    TabOrder = 1
+    object ProgramNameLabel: TLabel
+      Left = 15
+      Height = 32
+      Top = 15
+      Width = 161
+      Caption = 'Program Name'
+      Font.Height = -24
+      ParentColor = False
+      ParentFont = False
+    end
+    object ProgramDescriptionLabel: TLabel
+      Left = 15
+      Height = 20
+      Top = 53
+      Width = 161
+      Caption = 'Program description ...'
+      Font.Height = -15
+      Font.Style = [fsItalic]
+      ParentColor = False
+      ParentFont = False
+    end
+  end
+end

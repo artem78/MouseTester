@@ -58,6 +58,10 @@ object MainForm: TMainForm
         Caption = 'Journal'
         OnClick = JournalMenuItemClick
       end
+      object AboutMenuItem: TMenuItem
+        Caption = 'About...'
+        OnClick = AboutMenuItemClick
+      end
     end
   end
 end

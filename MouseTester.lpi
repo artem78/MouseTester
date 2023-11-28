@@ -14,14 +14,15 @@
       <UseXPManifest Value="True"/>
       <XPManifest>
         <DpiAware Value="True"/>
-        <TextName Value="Mouse tester"/>
-        <TextDesc Value="Small tool for mouse clicks testing"/>
+        <TextName Value="Mouse Tester"/>
+        <TextDesc Value="Small tool for testing mouse clicks and scroll"/>
       </XPManifest>
       <Icon Value="0"/>
     </General>
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <MinorVersionNr Value="9"/>
+      <StringTable FileDescription="Small tool for testing mouse clicks and scroll" ProductName="Mouse Tester"/>
     </VersionInfo>
     <BuildModes Count="3">
       <Item1 Name="Default" Default="True"/>
@@ -109,7 +110,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="3">
+    <Units Count="4">
       <Unit0>
         <Filename Value="MouseTester.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -130,6 +131,14 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="JournalFrm"/>
       </Unit2>
+      <Unit3>
+        <Filename Value="aboutfrm.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="AboutForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="AboutFrm"/>
+      </Unit3>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
