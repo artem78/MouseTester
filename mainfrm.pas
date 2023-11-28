@@ -93,6 +93,8 @@ begin
   TestAreaLabel.Caption:=Format('Scroll Down %d', [Abs(ScrollCounter)]);
 
   JournalForm.AddString('Scroll Down');
+
+  Handled:=True;
 end;
 
 procedure TMainForm.TestAreaLabelMouseWheelUp(Sender: TObject; Shift: TShiftState;
@@ -109,6 +111,8 @@ begin
   TestAreaLabel.Caption:=Format('Scroll Up %d', [Abs(ScrollCounter)]);
 
   JournalForm.AddString('Scroll Up');
+
+  Handled:=True;
 end;
 
 procedure TMainForm.JournalMenuItemClick(Sender: TObject);
