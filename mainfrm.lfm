@@ -12,6 +12,21 @@ object MainForm: TMainForm
   OnCreate = FormCreate
   Position = poScreenCenter
   LCLVersion = '2.2.4.0'
+  object InstructionsLabel: TLabel
+    Left = 0
+    Height = 330
+    Top = 0
+    Width = 500
+    Align = alClient
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Move cursor here and start press any button or scroll...'
+    Font.Height = 29
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+    OptimalFill = True
+  end
   object TestAreaLabel: TLabel
     Left = 0
     Height = 330

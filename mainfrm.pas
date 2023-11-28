@@ -12,6 +12,7 @@ type
   { TMainForm }
 
   TMainForm = class(TForm)
+    InstructionsLabel: TLabel;
     TestAreaLabel: TLabel;
     MainMenu: TMainMenu;
     MainMenuItem: TMenuItem;
@@ -29,6 +30,7 @@ type
     procedure JournalMenuItemClick(Sender: TObject);
   private
     ScrollCounter: Integer;
+    procedure HideInstructions;
   public
 
   end;
@@ -71,6 +73,8 @@ end;
 procedure TMainForm.TestAreaLabelMouseUp(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
+  HideInstructions;
+
   Color:=clGray;
 
   JournalForm.AddString(TestAreaLabel.Caption + ' released');
@@ -79,6 +83,8 @@ end;
 procedure TMainForm.TestAreaLabelMouseWheelDown(Sender: TObject; Shift: TShiftState;
   MousePos: TPoint; var Handled: Boolean);
 begin
+  HideInstructions;
+
   Color:=clSkyBlue;
 
   if ScrollCounter > 0 then
@@ -93,6 +99,8 @@ end;
 procedure TMainForm.TestAreaLabelMouseWheelUp(Sender: TObject; Shift: TShiftState;
   MousePos: TPoint; var Handled: Boolean);
 begin
+  HideInstructions;
+
   Color:=clSkyBlue;
 
   if ScrollCounter < 0 then
@@ -115,6 +123,11 @@ begin
     JournalForm.show
   else
     JournalForm.hide;
+end;
+
+procedure TMainForm.HideInstructions;
+begin
+  InstructionsLabel.Hide;
 end;
 
 end.
