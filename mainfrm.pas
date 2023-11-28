@@ -79,7 +79,7 @@ end;
 procedure TForm1.Label1MouseWheelDown(Sender: TObject; Shift: TShiftState;
   MousePos: TPoint; var Handled: Boolean);
 begin
-  Color:=clDefault;
+  Color:=clSkyBlue;
 
   if ScrollCounter > 0 then
     ScrollCounter:=0;
@@ -93,7 +93,7 @@ end;
 procedure TForm1.Label1MouseWheelUp(Sender: TObject; Shift: TShiftState;
   MousePos: TPoint; var Handled: Boolean);
 begin
-  Color:=clDefault;
+  Color:=clSkyBlue;
 
   if ScrollCounter < 0 then
     ScrollCounter:=0;
