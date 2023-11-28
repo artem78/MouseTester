@@ -41,6 +41,7 @@ object MainForm: TMainForm
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     Font.Style = [fsBold]
+    Layout = tlCenter
     ParentColor = False
     ParentFont = False
     OnMouseDown = TestAreaLabelMouseDown
