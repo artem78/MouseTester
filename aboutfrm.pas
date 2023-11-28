@@ -51,7 +51,7 @@ uses LCLIntf, FileInfo, DateUtils;
 
 procedure TAboutForm.HomePageValueLabelClick(Sender: TObject);
 begin
-  OpenURL(TLabel(Sender).Caption + '#Readme');
+  OpenURL(TLabel(Sender).Caption + '#readme');
 end;
 
 procedure TAboutForm.FormCreate(Sender: TObject);
