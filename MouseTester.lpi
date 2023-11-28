@@ -21,7 +21,7 @@
     </General>
     <VersionInfo>
       <UseVersionInfo Value="True"/>
-      <MinorVersionNr Value="9"/>
+      <MajorVersionNr Value="1"/>
       <StringTable FileDescription="Small tool for testing mouse clicks and scroll" ProductName="Mouse Tester"/>
     </VersionInfo>
     <BuildModes Count="3">
