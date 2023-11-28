@@ -26,7 +26,6 @@ type
       MousePos: TPoint; var Handled: Boolean);
     procedure TestAreaLabelMouseWheelUp(Sender: TObject; Shift: TShiftState;
       MousePos: TPoint; var Handled: Boolean);
-    procedure MainMenuItemClick(Sender: TObject);
     procedure JournalMenuItemClick(Sender: TObject);
   private
     ScrollCounter: Integer;
@@ -110,11 +109,6 @@ begin
   TestAreaLabel.Caption:=Format('Scroll Up %d', [Abs(ScrollCounter)]);
 
   JournalForm.AddString('Scroll Up');
-end;
-
-procedure TMainForm.MainMenuItemClick(Sender: TObject);
-begin
-
 end;
 
 procedure TMainForm.JournalMenuItemClick(Sender: TObject);

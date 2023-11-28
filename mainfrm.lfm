@@ -53,7 +53,6 @@ object MainForm: TMainForm
     Top = 52
     object MainMenuItem: TMenuItem
       Caption = 'Menu'
-      OnClick = MainMenuItemClick
       object JournalMenuItem: TMenuItem
         AutoCheck = True
         Caption = 'Journal'
