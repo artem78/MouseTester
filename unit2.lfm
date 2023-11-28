@@ -1,0 +1,21 @@
+object JournalForm: TJournalForm
+  Left = 357
+  Height = 259
+  Top = 176
+  Width = 536
+  Caption = 'Journal'
+  ClientHeight = 259
+  ClientWidth = 536
+  OnCreate = FormCreate
+  LCLVersion = '2.2.4.0'
+  object Memo1: TMemo
+    Left = 0
+    Height = 259
+    Top = 0
+    Width = 536
+    Align = alClient
+    ReadOnly = True
+    ScrollBars = ssAutoBoth
+    TabOrder = 0
+  end
+end

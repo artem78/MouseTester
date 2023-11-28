@@ -1,0 +1,47 @@
+object Form1: TForm1
+  Left = 334
+  Height = 347
+  Top = 186
+  Width = 466
+  Caption = 'Mouse Test'
+  ClientHeight = 327
+  ClientWidth = 466
+  Menu = MainMenu1
+  OnCreate = FormCreate
+  Position = poDesktopCenter
+  LCLVersion = '2.2.4.0'
+  object Label1: TLabel
+    Left = 0
+    Height = 327
+    Top = 0
+    Width = 466
+    Align = alClient
+    Alignment = taCenter
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Color = clBlack
+    Font.Height = -48
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    OnMouseDown = Label1MouseDown
+    OnMouseUp = Label1MouseUp
+    OnMouseWheelDown = Label1MouseWheelDown
+    OnMouseWheelUp = Label1MouseWheelUp
+  end
+  object MainMenu1: TMainMenu
+    Left = 52
+    Top = 52
+    object MenuItem1: TMenuItem
+      Caption = 'Menu'
+      OnClick = MenuItem1Click
+      object MenuItem2: TMenuItem
+        AutoCheck = True
+        Caption = 'Journal'
+        OnClick = MenuItem2Click
+      end
+    end
+  end
+end
