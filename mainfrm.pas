@@ -1,4 +1,4 @@
-unit Unit1;
+unit MainFrm;
 
 {$mode objfpc}{$H+}
 
@@ -38,7 +38,7 @@ var
 
 implementation
 
-uses Unit2;
+uses JournalFrm;
 
 {$R *.lfm}
 
