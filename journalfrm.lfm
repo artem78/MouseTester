@@ -8,7 +8,7 @@ object JournalForm: TJournalForm
   ClientWidth = 536
   OnCreate = FormCreate
   LCLVersion = '2.2.4.0'
-  object Memo1: TMemo
+  object JournalMemo: TMemo
     Left = 0
     Height = 259
     Top = 0

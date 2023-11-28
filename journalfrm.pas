@@ -12,7 +12,7 @@ type
   { TJournalForm }
 
   TJournalForm = class(TForm)
-    Memo1: TMemo;
+    JournalMemo: TMemo;
     procedure FormCreate(Sender: TObject);
   private
 
@@ -42,9 +42,9 @@ end;
 procedure TJournalForm.AddString(S: string);
 begin
   BringToFront;
-  Memo1.Append(Format('[%s]   %s', [FormatDateTime('hh:nn:ss.zzz', now), S]));
-  //Memo1.ScrollBy(0, 99999);
-  SendMessage(Memo1.Handle, EM_LINESCROLL, 0,Memo1.Lines.Count);
+  JournalMemo.Append(Format('[%s]   %s', [FormatDateTime('hh:nn:ss.zzz', now), S]));
+  //JournalMemo.ScrollBy(0, 99999);
+  SendMessage(JournalMemo.Handle, EM_LINESCROLL, 0,JournalMemo.Lines.Count);
 end;
 
 end.

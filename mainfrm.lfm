@@ -1,4 +1,4 @@
-object Form1: TForm1
+object MainForm: TMainForm
   Left = 334
   Height = 350
   Top = 186
@@ -8,11 +8,11 @@ object Form1: TForm1
   ClientWidth = 500
   Constraints.MinHeight = 350
   Constraints.MinWidth = 500
-  Menu = MainMenu1
+  Menu = MainMenu
   OnCreate = FormCreate
   Position = poScreenCenter
   LCLVersion = '2.2.4.0'
-  object Label1: TLabel
+  object TestAreaLabel: TLabel
     Left = 0
     Height = 330
     Top = 0
@@ -28,21 +28,21 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
-    OnMouseDown = Label1MouseDown
-    OnMouseUp = Label1MouseUp
-    OnMouseWheelDown = Label1MouseWheelDown
-    OnMouseWheelUp = Label1MouseWheelUp
+    OnMouseDown = TestAreaLabelMouseDown
+    OnMouseUp = TestAreaLabelMouseUp
+    OnMouseWheelDown = TestAreaLabelMouseWheelDown
+    OnMouseWheelUp = TestAreaLabelMouseWheelUp
   end
-  object MainMenu1: TMainMenu
+  object MainMenu: TMainMenu
     Left = 52
     Top = 52
-    object MenuItem1: TMenuItem
+    object MainMenuItem: TMenuItem
       Caption = 'Menu'
-      OnClick = MenuItem1Click
-      object MenuItem2: TMenuItem
+      OnClick = MainMenuItemClick
+      object JournalMenuItem: TMenuItem
         AutoCheck = True
         Caption = 'Journal'
-        OnClick = MenuItem2Click
+        OnClick = JournalMenuItemClick
       end
     end
   end
