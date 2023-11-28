@@ -1,20 +1,22 @@
 object Form1: TForm1
   Left = 334
-  Height = 347
+  Height = 350
   Top = 186
-  Width = 466
-  Caption = 'Mouse Test'
-  ClientHeight = 327
-  ClientWidth = 466
+  Width = 500
+  Caption = 'Mouse Tester'
+  ClientHeight = 330
+  ClientWidth = 500
+  Constraints.MinHeight = 350
+  Constraints.MinWidth = 500
   Menu = MainMenu1
   OnCreate = FormCreate
-  Position = poDesktopCenter
+  Position = poScreenCenter
   LCLVersion = '2.2.4.0'
   object Label1: TLabel
     Left = 0
-    Height = 327
+    Height = 330
     Top = 0
-    Width = 466
+    Width = 500
     Align = alClient
     Alignment = taCenter
     Font.CharSet = RUSSIAN_CHARSET
