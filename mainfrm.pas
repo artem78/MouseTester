@@ -50,6 +50,8 @@ uses JournalFrm, AboutFrm;
 procedure TMainForm.TestAreaLabelMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
+  HideInstructions;
+
   if Button = mbLeft then
     TestAreaLabel.Caption:='LMB'
   else if Button = mbRight then
