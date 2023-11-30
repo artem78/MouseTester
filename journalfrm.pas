@@ -25,7 +25,7 @@ var
 
 implementation
 
-uses LCLIntf, JwaWinUser;
+uses LCLIntf;
 {$R *.lfm}
 
 { TJournalForm }
@@ -43,8 +43,10 @@ procedure TJournalForm.AddString(S: string);
 begin
   BringToFront;
   JournalMemo.Append(Format('[%s]   %s', [FormatDateTime('hh:nn:ss.zzz', now), S]));
-  //JournalMemo.ScrollBy(0, 99999);
-  SendMessage(JournalMemo.Handle, EM_LINESCROLL, 0,JournalMemo.Lines.Count);
+
+  // Scroll memo to the end
+  // https://forum.lazarus.freepascal.org/index.php?topic=45635.msg392725#msg392725
+  JournalMemo.SelStart := MaxInt;
 end;
 
 end.
