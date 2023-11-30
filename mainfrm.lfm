@@ -10,9 +10,16 @@ object MainForm: TMainForm
   Constraints.MinWidth = 500
   Menu = MainMenu
   OnCreate = FormCreate
+  OnShow = FormShow
   Position = poScreenCenter
   LCLVersion = '2.2.4.0'
   object InstructionsLabel: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
     Left = 0
     Height = 330
     Top = 0
@@ -20,6 +27,7 @@ object MainForm: TMainForm
     Align = alClient
     Alignment = taCenter
     AutoSize = False
+    BorderSpacing.Around = 25
     Caption = 'Move cursor here and start press any button or scroll...'
     Font.Height = 29
     Layout = tlCenter

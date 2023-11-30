@@ -20,6 +20,7 @@ type
     JournalMenuItem: TMenuItem;
     procedure AboutMenuItemClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure TestAreaLabelMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure TestAreaLabelMouseUp(Sender: TObject; Button: TMouseButton;
@@ -71,6 +72,12 @@ end;
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
   ScrollCounter:=0;
+end;
+
+procedure TMainForm.FormShow(Sender: TObject);
+begin
+  if InstructionsLabel.IsVisible then
+    InstructionsLabel.AdjustFontForOptimalFill;
 end;
 
 procedure TMainForm.AboutMenuItemClick(Sender: TObject);
