@@ -5,7 +5,8 @@ unit MainFrm;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Menus, Types;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Menus, Types,
+  DateUtils;
 
 type
 
@@ -32,7 +33,10 @@ type
     procedure JournalMenuItemClick(Sender: TObject);
   private
     ScrollCounter: Integer;
+    LastButtonPressedTime: TDateTime;
+
     procedure HideInstructions;
+    procedure UpdateLastButtonPressedTime;
     class function ButtonToStr(ABtn: TMouseButton): String; static;
   public
 
@@ -51,6 +55,8 @@ uses JournalFrm, AboutFrm;
 
 procedure TMainForm.TestAreaLabelMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
+var
+  ButtonPressedTime: TDateTime;
 begin
   HideInstructions;
 
@@ -61,11 +67,14 @@ begin
   ScrollCounter:=0;
 
   JournalForm.AddString(TestAreaLabel.Caption + ' pressed');
+
+  UpdateLastButtonPressedTime;
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
   ScrollCounter:=0;
+  LastButtonPressedTime:=0;
 end;
 
 procedure TMainForm.FormShow(Sender: TObject);
@@ -93,6 +102,8 @@ begin
   Color:=clGray;
 
   JournalForm.AddString(TestAreaLabel.Caption + ' released');
+
+  UpdateLastButtonPressedTime;
 end;
 
 procedure TMainForm.TestAreaLabelMouseWheelDown(Sender: TObject; Shift: TShiftState;
@@ -142,6 +153,22 @@ end;
 procedure TMainForm.HideInstructions;
 begin
   InstructionsLabel.Hide;
+end;
+
+procedure TMainForm.UpdateLastButtonPressedTime;
+const
+  ErrMsg = 'False double click detected!';
+var
+  ButtonPressedTime: TDateTime;
+begin
+  ButtonPressedTime := Now;
+
+  if MilliSecondsBetween(ButtonPressedTime, LastButtonPressedTime) <= 50 then
+  begin
+    JournalForm.AddString(ErrMsg);
+    MessageDlg(ErrMsg, mtWarning, [mbOK], 0);
+  end;
+  LastButtonPressedTime := ButtonPressedTime;
 end;
 
 class function TMainForm.ButtonToStr(ABtn: TMouseButton): String;
