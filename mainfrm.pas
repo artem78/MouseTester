@@ -33,6 +33,7 @@ type
   private
     ScrollCounter: Integer;
     procedure HideInstructions;
+    class function ButtonToStr(ABtn: TMouseButton): String; static;
   public
 
   end;
@@ -53,14 +54,7 @@ procedure TMainForm.TestAreaLabelMouseDown(Sender: TObject; Button: TMouseButton
 begin
   HideInstructions;
 
-  if Button = mbLeft then
-    TestAreaLabel.Caption:='Left Button'
-  else if Button = mbRight then
-    TestAreaLabel.Caption:='Right Button'
-  else if Button = mbMiddle then
-    TestAreaLabel.Caption:='Middle Button'
-  else
-    TestAreaLabel.Caption:='???';
+  TestAreaLabel.Caption := ButtonToStr(Button);
 
   Color:=clYellow;
 
@@ -94,14 +88,7 @@ procedure TMainForm.TestAreaLabelMouseUp(Sender: TObject; Button: TMouseButton;
 begin
   HideInstructions;
 
-  if Button = mbLeft then
-    TestAreaLabel.Caption:='Left Button'
-  else if Button = mbRight then
-    TestAreaLabel.Caption:='Right Button'
-  else if Button = mbMiddle then
-    TestAreaLabel.Caption:='Middle Button'
-  else
-    TestAreaLabel.Caption:='???';
+  TestAreaLabel.Caption := ButtonToStr(Button);
 
   Color:=clGray;
 
@@ -155,6 +142,17 @@ end;
 procedure TMainForm.HideInstructions;
 begin
   InstructionsLabel.Hide;
+end;
+
+class function TMainForm.ButtonToStr(ABtn: TMouseButton): String;
+begin
+  case ABtn of
+    mbLeft:   Exit('Left Button');
+    mbMiddle: Exit('Middle Button');
+    mbRight:  Exit('Right Button');
+  else
+    Exit('Unknown Button');
+  end;
 end;
 
 end.
