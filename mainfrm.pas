@@ -55,8 +55,6 @@ uses JournalFrm, AboutFrm;
 
 procedure TMainForm.TestAreaLabelMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
-var
-  ButtonPressedTime: TDateTime;
 begin
   HideInstructions;
 
