@@ -94,6 +94,15 @@ procedure TMainForm.TestAreaLabelMouseUp(Sender: TObject; Button: TMouseButton;
 begin
   HideInstructions;
 
+  if Button = mbLeft then
+    TestAreaLabel.Caption:='Left Button'
+  else if Button = mbRight then
+    TestAreaLabel.Caption:='Right Button'
+  else if Button = mbMiddle then
+    TestAreaLabel.Caption:='Middle Button'
+  else
+    TestAreaLabel.Caption:='???';
+
   Color:=clGray;
 
   JournalForm.AddString(TestAreaLabel.Caption + ' released');
