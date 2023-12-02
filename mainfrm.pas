@@ -163,7 +163,7 @@ end;
 
 procedure TMainForm.UpdateLastButtonPressedTime;
 const
-  ErrMsg = 'False double click detected!';
+  ErrMsg = 'Possible false double click detected!';
 var
   ButtonPressedTime: TDateTime;
 begin
