@@ -71,7 +71,7 @@
           <Version Value="11"/>
           <PathDelim Value="\"/>
           <Target>
-            <Filename Value="MouseTester"/>
+            <Filename Value="releases\MouseTester_$(TargetOS)_$(TargetCPU)\MouseTester"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
