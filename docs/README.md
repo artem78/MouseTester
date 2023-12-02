@@ -10,7 +10,9 @@ Simply move mouse cursor to program window and press buttons or scroll. In addit
 
 # Download
 
-[Download for Windows](https://github.com/artem78/MouseTester/releases/latest)
+Windows and Linux supported.
+
+[Download latest build](https://github.com/artem78/MouseTester/releases/latest)
 
 # ToDo
 
