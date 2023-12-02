@@ -14,8 +14,8 @@ Simply move mouse cursor to program window and press buttons or scroll. In addit
 
 # ToDo
 
-- [ ] Show warnings if double-clicks detected
-- [ ] Port to Linux
+- [x] Show warnings if false double clicks detected
+- [x] Port to Linux
 - [ ] Add more translations
 - [ ] Make icon
 

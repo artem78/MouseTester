@@ -30,5 +30,7 @@ lib/
 *.app/
 
 
-
+# Own rules
 MouseTester
+*.backup
+/releases/

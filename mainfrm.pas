@@ -5,13 +5,16 @@ unit MainFrm;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Menus, Types;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Menus,
+  ActnList, Types, DateUtils;
 
 type
 
   { TMainForm }
 
   TMainForm = class(TForm)
+    ToggleJournalVisibilityAction: TAction;
+    ActionList: TActionList;
     InstructionsLabel: TLabel;
     AboutMenuItem: TMenuItem;
     TestAreaLabel: TLabel;
@@ -20,6 +23,7 @@ type
     JournalMenuItem: TMenuItem;
     procedure AboutMenuItemClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure TestAreaLabelMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure TestAreaLabelMouseUp(Sender: TObject; Button: TMouseButton;
@@ -28,10 +32,15 @@ type
       MousePos: TPoint; var Handled: Boolean);
     procedure TestAreaLabelMouseWheelUp(Sender: TObject; Shift: TShiftState;
       MousePos: TPoint; var Handled: Boolean);
-    procedure JournalMenuItemClick(Sender: TObject);
+    procedure ToggleJournalVisibilityActionExecute(Sender: TObject);
+    procedure ToggleJournalVisibilityActionUpdate(Sender: TObject);
   private
     ScrollCounter: Integer;
+    LastButtonPressedTime: TDateTime;
+
     procedure HideInstructions;
+    procedure UpdateLastButtonPressedTime;
+    class function ButtonToStr(ABtn: TMouseButton): String; static;
   public
 
   end;
@@ -52,25 +61,27 @@ procedure TMainForm.TestAreaLabelMouseDown(Sender: TObject; Button: TMouseButton
 begin
   HideInstructions;
 
-  if Button = mbLeft then
-    TestAreaLabel.Caption:='Left Button'
-  else if Button = mbRight then
-    TestAreaLabel.Caption:='Right Button'
-  else if Button = mbMiddle then
-    TestAreaLabel.Caption:='Middle Button'
-  else
-    TestAreaLabel.Caption:='???';
+  TestAreaLabel.Caption := ButtonToStr(Button);
 
   Color:=clYellow;
 
   ScrollCounter:=0;
 
   JournalForm.AddString(TestAreaLabel.Caption + ' pressed');
+
+  UpdateLastButtonPressedTime;
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
   ScrollCounter:=0;
+  LastButtonPressedTime:=0;
+end;
+
+procedure TMainForm.FormShow(Sender: TObject);
+begin
+  if InstructionsLabel.IsVisible then
+    InstructionsLabel.AdjustFontForOptimalFill;
 end;
 
 procedure TMainForm.AboutMenuItemClick(Sender: TObject);
@@ -87,9 +98,13 @@ procedure TMainForm.TestAreaLabelMouseUp(Sender: TObject; Button: TMouseButton;
 begin
   HideInstructions;
 
+  TestAreaLabel.Caption := ButtonToStr(Button);
+
   Color:=clGray;
 
   JournalForm.AddString(TestAreaLabel.Caption + ' released');
+
+  UpdateLastButtonPressedTime;
 end;
 
 procedure TMainForm.TestAreaLabelMouseWheelDown(Sender: TObject; Shift: TShiftState;
@@ -128,17 +143,50 @@ begin
   Handled:=True;
 end;
 
-procedure TMainForm.JournalMenuItemClick(Sender: TObject);
+procedure TMainForm.ToggleJournalVisibilityActionExecute(Sender: TObject);
 begin
-  if JournalMenuItem.Checked then
+  if {JournalMenuItem.Checked} not JournalForm.IsVisible then
     JournalForm.show
   else
     JournalForm.hide;
 end;
 
+procedure TMainForm.ToggleJournalVisibilityActionUpdate(Sender: TObject);
+begin
+  ToggleJournalVisibilityAction.Checked := JournalForm.IsVisible;
+end;
+
 procedure TMainForm.HideInstructions;
 begin
   InstructionsLabel.Hide;
+end;
+
+procedure TMainForm.UpdateLastButtonPressedTime;
+const
+  ErrMsg = 'Possible false double click detected!';
+  FalseDblClickThresholdMS = 50; // Todo: make adjustable from the settings
+var
+  ButtonPressedTime: TDateTime;
+begin
+  ButtonPressedTime := Now;
+
+  if MilliSecondsBetween(ButtonPressedTime, LastButtonPressedTime) <= FalseDblClickThresholdMS then
+  begin
+    JournalForm.AddString(ErrMsg);
+    MessageDlg(ErrMsg, mtWarning, [mbOK], 0);
+  end;
+  LastButtonPressedTime := ButtonPressedTime;
+end;
+
+class function TMainForm.ButtonToStr(ABtn: TMouseButton): String;
+begin
+  case ABtn of
+    mbLeft:   Exit('Left Button');
+    mbMiddle: Exit('Middle Button');
+    mbRight:  Exit('Right Button');
+  else
+    Exit('Unknown Button');
+  end;
 end;
 
 end.
