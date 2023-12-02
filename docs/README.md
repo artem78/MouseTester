@@ -1,5 +1,5 @@
 # Mouse Tester
-Small tool for testing mouse clicks and scroll. It can help you detect double-clicks and accidental roll back of mouse wheel. 
+Small diagnostic tool for testing mouse clicks and scroll. It can help you detect false double-clicks and accidental roll back of mouse wheel encoder. 
 
 ![](images/screenshot1.png)
 
@@ -18,3 +18,6 @@ Simply move mouse cursor to program window and press buttons or scroll. In addit
 - [ ] Port to Linux
 - [ ] Add more translations
 - [ ] Make icon
+
+# See also
+* [Three Major Failures Of The Micro Switch In The Mouse](https://www.greetech-switch.com/info/three-major-failures-of-the-micro-switch-in-th-41608004.html)
