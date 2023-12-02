@@ -164,12 +164,13 @@ end;
 procedure TMainForm.UpdateLastButtonPressedTime;
 const
   ErrMsg = 'Possible false double click detected!';
+  FalseDblClickThresholdMS = 50; // Todo: make adjustable from the settings
 var
   ButtonPressedTime: TDateTime;
 begin
   ButtonPressedTime := Now;
 
-  if MilliSecondsBetween(ButtonPressedTime, LastButtonPressedTime) <= 50 then
+  if MilliSecondsBetween(ButtonPressedTime, LastButtonPressedTime) <= FalseDblClickThresholdMS then
   begin
     JournalForm.AddString(ErrMsg);
     MessageDlg(ErrMsg, mtWarning, [mbOK], 0);
