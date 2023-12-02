@@ -19,7 +19,6 @@ begin
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TJournalForm, JournalForm);
-  Application.CreateForm(TAboutForm, AboutForm);
   Application.Run;
 end.
 
