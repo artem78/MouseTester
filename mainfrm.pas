@@ -5,14 +5,16 @@ unit MainFrm;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Menus, Types,
-  DateUtils;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Menus,
+  ActnList, Types, DateUtils;
 
 type
 
   { TMainForm }
 
   TMainForm = class(TForm)
+    ToggleJournalVisibilityAction: TAction;
+    ActionList: TActionList;
     InstructionsLabel: TLabel;
     AboutMenuItem: TMenuItem;
     TestAreaLabel: TLabel;
@@ -30,7 +32,8 @@ type
       MousePos: TPoint; var Handled: Boolean);
     procedure TestAreaLabelMouseWheelUp(Sender: TObject; Shift: TShiftState;
       MousePos: TPoint; var Handled: Boolean);
-    procedure JournalMenuItemClick(Sender: TObject);
+    procedure ToggleJournalVisibilityActionExecute(Sender: TObject);
+    procedure ToggleJournalVisibilityActionUpdate(Sender: TObject);
   private
     ScrollCounter: Integer;
     LastButtonPressedTime: TDateTime;
@@ -140,12 +143,17 @@ begin
   Handled:=True;
 end;
 
-procedure TMainForm.JournalMenuItemClick(Sender: TObject);
+procedure TMainForm.ToggleJournalVisibilityActionExecute(Sender: TObject);
 begin
-  if JournalMenuItem.Checked then
+  if {JournalMenuItem.Checked} not JournalForm.IsVisible then
     JournalForm.show
   else
     JournalForm.hide;
+end;
+
+procedure TMainForm.ToggleJournalVisibilityActionUpdate(Sender: TObject);
+begin
+  ToggleJournalVisibilityAction.Checked := JournalForm.IsVisible;
 end;
 
 procedure TMainForm.HideInstructions;
