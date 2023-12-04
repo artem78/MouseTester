@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<project name="MouseTester">
+	<property name="build_dir" location="build"/>
+	<property name="releases_dir" location="releases"/>
+	<property name="lazarus_dir" location="${user.home}/fpcupdeluxe/lazarus/"/>
+	<property name="lazarus_pcp" location="${user.home}/fpcupdeluxe/config_lazarus"/>
+
+	<target name="clean">
+		<delete dir="${build_dir}"/>
+		<delete file="MouseTester"/>
+	</target>
+
+	<target name="compile_linux" depends="clean">
+		<!--<echoproperties/>-->
+		<mkdir dir="${build_dir}"/>
+		<exec executable="${lazarus_dir}/lazbuild">
+			<arg value="--pcp=${lazarus_pcp}"/>
+			<arg value="--build-mode=Release (${arch})"/>
+			<arg value="MouseTester.lpr"/>
+		</exec>
+		<copy file="MouseTester" todir="${build_dir}"/>
+		<chmod file="${build_dir}/MouseTester" perm="+x"/>
+	</target>
+     
+	<target name="package_linux" depends="compile_linux">
+		<exec executable="git" outputproperty="version">
+			<arg value="describe"/>
+			<arg value="--dirty"/>
+		</exec>
+		<zip destfile="${releases_dir}/MouseTester_${version}_linux_${arch}.zip" basedir="${build_dir}"/>
+	</target>
+
+	<target name="run" depends="compile_linux">
+		<exec executable="${build_dir}/MouseTester"/>
+	</target>
+</project>
