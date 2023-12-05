@@ -1,4 +1,8 @@
-To build zip-packages install `ant` and run command:
+To build zip-packages you should [install Apache Ant](https://ant.apache.org/manual/install.html) first.
+
+Rename `build.properties.sample` file to `build.properties`. Open it and customize paths.
+
+Next run command:
 
 ```
 ant package -Darch="32-bit"

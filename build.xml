@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <project name="MouseTester" xmlns:if="ant:if" xmlns:unless="ant:unless">
 	<!-- Properties: -->
+	<property file="build.properties"/>
+	
 	<condition property="os_family" value="windows">
 		<os family="windows" />
 	</condition>
@@ -10,17 +12,6 @@
 
 	<property name="build_dir" location="build"/>
 	<property name="releases_dir" location="releases"/>
-	
-	<condition property="lazarus_dir" value="D:\Programs\Lazarus_2.2.4_32bit\">
-		<os family="windows" />
-	</condition>
-	<condition property="lazarus_dir" value="${user.home}/fpcupdeluxe/lazarus/">
-		<os family="unix" />
-	</condition>
-	
-	<condition property="lazarus_pcp" value="${user.home}/fpcupdeluxe/config_lazarus">
-		<os family="unix" />
-	</condition>
 	
 	<condition property="executable" value="MouseTester.exe">
 		<os family="windows" />

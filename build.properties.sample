@@ -1,0 +1,6 @@
+# For windows:
+#lazarus_dir=D:\Programs\Lazarus_2.2.4_32bit\
+
+# For linux:
+lazarus_dir=${user.home}/fpcupdeluxe/lazarus/
+lazarus_pcp=${user.home}/fpcupdeluxe/config_lazarus

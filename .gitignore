@@ -34,3 +34,4 @@ lib/
 MouseTester
 *.backup
 /releases/
+/build.properties
