@@ -55,6 +55,20 @@
 		</exec>
 		<zip destfile="${releases_dir}/MouseTester_${version}_${os_family}_${arch}.zip" basedir="${build_dir}"/>
 	</target>
+	
+	<target name="package_32">
+		<antcall target="package">
+			<param name="arch" value="32-bit"/>
+		</antcall>
+	</target>
+	
+	<target name="package_64">
+		<antcall target="package">
+			<param name="arch" value="64-bit"/>
+		</antcall>
+	</target>
+	
+	<target name="package_all" depends="package_32,package_64" description="Builds both 32 and 64-bit packages" />
 
 	<target name="run" depends="compile">
 		<exec executable="${build_dir}/${executable}"/>
