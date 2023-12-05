@@ -1,36 +1,62 @@
 <?xml version="1.0"?>
-<project name="MouseTester">
+<project name="MouseTester" xmlns:if="ant:if" xmlns:unless="ant:unless">
+	<!-- Properties: -->
+	<condition property="os_family" value="windows">
+		<os family="windows" />
+	</condition>
+	<condition property="os_family" value="linux">
+		<os family="unix" />
+	</condition>
+
 	<property name="build_dir" location="build"/>
 	<property name="releases_dir" location="releases"/>
-	<property name="lazarus_dir" location="${user.home}/fpcupdeluxe/lazarus/"/>
-	<property name="lazarus_pcp" location="${user.home}/fpcupdeluxe/config_lazarus"/>
+	
+	<condition property="lazarus_dir" value="D:\Programs\Lazarus_2.2.4_32bit\">
+		<os family="windows" />
+	</condition>
+	<condition property="lazarus_dir" value="${user.home}/fpcupdeluxe/lazarus/">
+		<os family="unix" />
+	</condition>
+	
+	<condition property="lazarus_pcp" value="${user.home}/fpcupdeluxe/config_lazarus">
+		<os family="unix" />
+	</condition>
+	
+	<condition property="executable" value="MouseTester.exe">
+		<os family="windows" />
+	</condition>
+	<condition property="executable" value="MouseTester">
+		<os family="unix" />
+	</condition>
 
+
+	<!-- Targets: -->
 	<target name="clean">
 		<delete dir="${build_dir}"/>
-		<delete file="MouseTester"/>
+		<delete file="${executable}"/>
 	</target>
 
-	<target name="compile_linux" depends="clean">
-		<!--<echoproperties/>-->
+	<target name="compile" depends="clean">
+		<!-- <echoproperties/> -->
 		<mkdir dir="${build_dir}"/>
 		<exec executable="${lazarus_dir}/lazbuild">
-			<arg value="--pcp=${lazarus_pcp}"/>
+			<arg value="--pcp=${lazarus_pcp}" if:set="lazarus_pcp"/>
 			<arg value="--build-mode=Release (${arch})"/>
 			<arg value="MouseTester.lpr"/>
 		</exec>
-		<copy file="MouseTester" todir="${build_dir}"/>
-		<chmod file="${build_dir}/MouseTester" perm="+x"/>
+		<copy file="${executable}" todir="${build_dir}"/>
+		<chmod file="${build_dir}/${executable}" perm="+x"/>
 	</target>
      
-	<target name="package_linux" depends="compile_linux">
+	<target name="package" depends="compile">
 		<exec executable="git" outputproperty="version">
 			<arg value="describe"/>
 			<arg value="--dirty"/>
 		</exec>
-		<zip destfile="${releases_dir}/MouseTester_${version}_linux_${arch}.zip" basedir="${build_dir}"/>
+		<zip destfile="${releases_dir}/MouseTester_${version}_${os_family}_${arch}.zip" basedir="${build_dir}"/>
 	</target>
 
-	<target name="run" depends="compile_linux">
-		<exec executable="${build_dir}/MouseTester"/>
+	<target name="run" depends="compile">
+		<exec executable="${build_dir}/${executable}"/>
 	</target>
 </project>
