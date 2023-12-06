@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Menus,
-  ActnList, ComCtrls, Types, DateUtils;
+  ActnList, ComCtrls, ExtCtrls, Types, DateUtils;
 
 type
 
@@ -14,6 +14,7 @@ type
 
   TMainForm = class(TForm)
     StatusBar: TStatusBar;
+    StatusBarCleanTimer: TTimer;
     ToggleJournalVisibilityAction: TAction;
     ActionList: TActionList;
     InstructionsLabel: TLabel;
@@ -25,6 +26,7 @@ type
     procedure AboutMenuItemClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure StatusBarCleanTimerTimer(Sender: TObject);
     procedure TestAreaLabelMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure TestAreaLabelMouseUp(Sender: TObject; Button: TMouseButton;
@@ -42,6 +44,7 @@ type
     procedure HideInstructions;
     procedure UpdateLastButtonPressedTime;
     class function ButtonToStr(ABtn: TMouseButton): String; static;
+    procedure PrintMsgInStatusBar(const AMsg: String);
   public
 
   end;
@@ -83,6 +86,11 @@ procedure TMainForm.FormShow(Sender: TObject);
 begin
   if InstructionsLabel.IsVisible then
     InstructionsLabel.AdjustFontForOptimalFill;
+end;
+
+procedure TMainForm.StatusBarCleanTimerTimer(Sender: TObject);
+begin
+  StatusBar.SimpleText := '';
 end;
 
 procedure TMainForm.AboutMenuItemClick(Sender: TObject);
@@ -175,7 +183,7 @@ begin
   begin
     JournalForm.AddString(ErrMsg);
     //MessageDlg(ErrMsg, mtWarning, [mbOK], 0);
-    StatusBar.SimpleText := ErrMsg;
+    PrintMsgInStatusBar(ErrMsg);
   end;
   LastButtonPressedTime := ButtonPressedTime;
 end;
@@ -189,6 +197,15 @@ begin
   else
     Exit('Unknown Button');
   end;
+end;
+
+procedure TMainForm.PrintMsgInStatusBar(const AMsg: String);
+begin
+  StatusBar.SimpleText := AMsg;
+
+  // Reset cleaning timer if set
+  StatusBarCleanTimer.Enabled := False;
+  StatusBarCleanTimer.Enabled := True;
 end;
 
 end.

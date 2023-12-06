@@ -90,4 +90,11 @@ object MainForm: TMainForm
       OnUpdate = ToggleJournalVisibilityActionUpdate
     end
   end
+  object StatusBarCleanTimer: TTimer
+    Enabled = False
+    Interval = 3500
+    OnTimer = StatusBarCleanTimerTimer
+    Left = 432
+    Top = 248
+  end
 end
