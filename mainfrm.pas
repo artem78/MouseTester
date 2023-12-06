@@ -29,6 +29,9 @@ type
     procedure StatusBarCleanTimerTimer(Sender: TObject);
     procedure TestAreaLabelMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
+    procedure TestAreaLabelMouseLeave(Sender: TObject);
+    procedure TestAreaLabelMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
     procedure TestAreaLabelMouseUp(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure TestAreaLabelMouseWheelDown(Sender: TObject; Shift: TShiftState;
@@ -45,6 +48,9 @@ type
     procedure UpdateLastButtonPressedTime;
     class function ButtonToStr(ABtn: TMouseButton): String; static;
     procedure PrintMsgInStatusBar(const AMsg: String);
+
+    type
+      StatusBarPanelIdx = (sbpXCoordIdx, sbpYCoordIdx, sbpMessageIdx);
   public
 
   end;
@@ -76,6 +82,19 @@ begin
   UpdateLastButtonPressedTime;
 end;
 
+procedure TMainForm.TestAreaLabelMouseLeave(Sender: TObject);
+begin
+  StatusBar.Panels[Ord(sbpXCoordIdx)].Text := '';
+  StatusBar.Panels[Ord(sbpYCoordIdx)].Text := '';
+end;
+
+procedure TMainForm.TestAreaLabelMouseMove(Sender: TObject; Shift: TShiftState;
+  X, Y: Integer);
+begin
+  StatusBar.Panels[Ord(sbpXCoordIdx)].Text := 'X: ' + IntToStr(X);
+  StatusBar.Panels[Ord(sbpYCoordIdx)].Text := 'Y: ' + IntToStr(Y);
+end;
+
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
   ScrollCounter:=0;
@@ -90,7 +109,7 @@ end;
 
 procedure TMainForm.StatusBarCleanTimerTimer(Sender: TObject);
 begin
-  StatusBar.SimpleText := '';
+  StatusBar.Panels[Ord(sbpMessageIdx)].Text := '';
 end;
 
 procedure TMainForm.AboutMenuItemClick(Sender: TObject);
@@ -201,7 +220,7 @@ end;
 
 procedure TMainForm.PrintMsgInStatusBar(const AMsg: String);
 begin
-  StatusBar.SimpleText := AMsg;
+  StatusBar.Panels[Ord(sbpMessageIdx)].Text := AMsg;
 
   // Reset cleaning timer if set
   StatusBarCleanTimer.Enabled := False;

@@ -53,6 +53,8 @@ object MainForm: TMainForm
     ParentColor = False
     ParentFont = False
     OnMouseDown = TestAreaLabelMouseDown
+    OnMouseLeave = TestAreaLabelMouseLeave
+    OnMouseMove = TestAreaLabelMouseMove
     OnMouseUp = TestAreaLabelMouseUp
     OnMouseWheelDown = TestAreaLabelMouseWheelDown
     OnMouseWheelUp = TestAreaLabelMouseWheelUp
@@ -62,10 +64,18 @@ object MainForm: TMainForm
     Height = 23
     Top = 307
     Width = 500
-    Font.Color = clMaroon
-    Font.Style = [fsBold]
-    Panels = <>
+    Panels = <    
+      item
+        Width = 60
+      end    
+      item
+        Width = 60
+      end    
+      item
+        Width = 50
+      end>
     ParentFont = False
+    SimplePanel = False
   end
   object MainMenu: TMainMenu
     Left = 52
