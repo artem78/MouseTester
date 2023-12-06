@@ -50,7 +50,7 @@ type
     procedure PrintMsgInStatusBar(const AMsg: String);
 
     type
-      StatusBarPanelIdx = (sbpXCoordIdx, sbpYCoordIdx, sbpMessageIdx);
+      TStatusBarPanelIdx = (sbpXCoordIdx, sbpYCoordIdx, sbpMessageIdx);
   public
 
   end;
