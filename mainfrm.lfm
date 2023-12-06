@@ -20,10 +20,10 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 0
-    Height = 330
-    Top = 0
-    Width = 500
+    Left = 25
+    Height = 257
+    Top = 25
+    Width = 450
     Align = alClient
     Alignment = taCenter
     AutoSize = False
@@ -37,7 +37,7 @@ object MainForm: TMainForm
   end
   object TestAreaLabel: TLabel
     Left = 0
-    Height = 330
+    Height = 307
     Top = 0
     Width = 500
     Align = alClient
@@ -56,6 +56,16 @@ object MainForm: TMainForm
     OnMouseUp = TestAreaLabelMouseUp
     OnMouseWheelDown = TestAreaLabelMouseWheelDown
     OnMouseWheelUp = TestAreaLabelMouseWheelUp
+  end
+  object StatusBar: TStatusBar
+    Left = 0
+    Height = 23
+    Top = 307
+    Width = 500
+    Font.Color = clMaroon
+    Font.Style = [fsBold]
+    Panels = <>
+    ParentFont = False
   end
   object MainMenu: TMainMenu
     Left = 52

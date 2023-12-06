@@ -6,13 +6,14 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Menus,
-  ActnList, Types, DateUtils;
+  ActnList, ComCtrls, Types, DateUtils;
 
 type
 
   { TMainForm }
 
   TMainForm = class(TForm)
+    StatusBar: TStatusBar;
     ToggleJournalVisibilityAction: TAction;
     ActionList: TActionList;
     InstructionsLabel: TLabel;
@@ -173,7 +174,8 @@ begin
   if MilliSecondsBetween(ButtonPressedTime, LastButtonPressedTime) <= FalseDblClickThresholdMS then
   begin
     JournalForm.AddString(ErrMsg);
-    MessageDlg(ErrMsg, mtWarning, [mbOK], 0);
+    //MessageDlg(ErrMsg, mtWarning, [mbOK], 0);
+    StatusBar.SimpleText := ErrMsg;
   end;
   LastButtonPressedTime := ButtonPressedTime;
 end;
